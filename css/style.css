@@ -11,13 +11,56 @@ img {
 .gameboard {
     display: flex;
     flex-wrap: wrap;
-    width: 80vw;
+    max-width: 550px;
     margin: 0 auto;
 }
 
-.card {
+.flip-container {
+    perspective: 1000px;
+    margin: 10px;
+}
+.flip-container.open .flipper, .flip-container.open .flipper {
+    transform: rotateY(180deg);
+}
+.flip-container, .front, .back {
     width: 110px;
     height: 140px;
-    background-color: red;
-    margin: 10px;
+}
+.flipper {
+    transition: .6s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+.front, .back {
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    border: 1px solid black;
+}
+.front {
+    z-index: 2;
+    transform: rotateY(0deg);
+    /* background-color: green; */
+}
+.back {
+    /* background-color: red; */
+    transform: rotateY(180deg);
+}
+
+.open {
+    /* background-color: blue; */
+}
+
+.pair {
+    /* background-color: pink; */
+}
+
+.score {
+    position: fixed;
+    font-size: 40px;
+    background-color: blue;
+    padding: 10px 20px;
+    color: white;
 }
