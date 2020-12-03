@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!el) return false;
         if (openCards.includes(el)) return false;
         if (el.classList.contains('pair')) return false;
-        
+        blockClicks = true;
         el.classList.add('open');
         openCards.push(el);
 
@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (openCards.length === 2) checkPair();
             showScore();
             checkWin();
+            blockClicks = false;
         }, 500);
     });
 
