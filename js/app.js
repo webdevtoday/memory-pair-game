@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgDirName = 'img';
     const imgFormat = 'png';
     let openCards = [];
+    let blockClicks = false;
 
     function rand(min, max) {
         let rand = min + Math.random() * (max + 1 - min);
@@ -85,6 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function checkWin() {
         if (numberOfOpenCards === 12) {
+            score.innerHTML += ' YOU WIN!';
             console.log('%cWIN!!!', "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
         }
     }
@@ -92,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     gameboard.insertAdjacentHTML('beforeend', createCardsFragment());
 
     gameboard.addEventListener('click', (e) => {
+        if (blockClicks) return false;
         const el = e.target.closest('.card');
         if (!el) return false;
         if (openCards.includes(el)) return false;
@@ -100,12 +103,11 @@ document.addEventListener('DOMContentLoaded', () => {
         el.classList.add('open');
         openCards.push(el);
 
-        if (openCards.length === 2) checkPair();
-        showScore();
-        checkWin();
-        console.log(el);
-        console.dir(el);
-        console.log(openCards);
+        setTimeout(() => {
+            if (openCards.length === 2) checkPair();
+            showScore();
+            checkWin();
+        }, 500);
     });
 
 });

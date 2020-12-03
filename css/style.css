@@ -4,6 +4,20 @@
     box-sizing: border-box;
 }
 
+:root {
+    --card-width: 110px;
+    --card-height: 140px;
+    --card-gap: 10px;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-width: 365px;
+}
+
 img {
     max-width: 100%;
 }
@@ -11,20 +25,21 @@ img {
 .gameboard {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     max-width: 550px;
     margin: 0 auto;
 }
 
 .flip-container {
     perspective: 1000px;
-    margin: 10px;
+    margin: var(--card-gap);
 }
 .flip-container.open .flipper, .flip-container.open .flipper {
     transform: rotateY(180deg);
 }
 .flip-container, .front, .back {
-    width: 110px;
-    height: 140px;
+    width: var(--card-width);
+    height: var(--card-height);
 }
 .flipper {
     transition: .6s;
@@ -42,25 +57,39 @@ img {
 .front {
     z-index: 2;
     transform: rotateY(0deg);
-    /* background-color: green; */
 }
 .back {
-    /* background-color: red; */
     transform: rotateY(180deg);
-}
-
-.open {
-    /* background-color: blue; */
-}
-
-.pair {
-    /* background-color: pink; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .score {
     position: fixed;
+    top: 0;
+    left: 0;
     font-size: 40px;
     background-color: blue;
     padding: 10px 20px;
     color: white;
+}
+
+@media (max-width: 600px) {
+    :root {
+        --card-height: 120px;
+        --card-gap: 5px;
+    }
+
+    body {    
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width: 465px) {
+    body {
+        display: flex;
+        align-items: flex-end;
+    }
 }
