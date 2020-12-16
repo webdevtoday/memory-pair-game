@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     const gameboard = document.querySelector('.gameboard');
     const score = document.querySelector('.score');
+    const newGameButton = document.querySelector('.button');
     const numberOfCards = 12;
+    const animationSpeed = 500;
     let numberOfOpenCards = 0;
     const images = [
         'albatross', 'anchor', 'coral',
@@ -14,6 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const imgFormat = 'png';
     let openCards = [];
     let blockClicks = false;
+
+
 
     function rand(min, max) {
         let rand = min + Math.random() * (max + 1 - min);
@@ -88,8 +92,17 @@ document.addEventListener('DOMContentLoaded', () => {
         if (numberOfOpenCards === 12) {
             score.innerHTML += ' YOU WIN!';
             console.log('%cWIN!!!', "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
+            showButton();
         }
     }
+
+    function showButton() {
+        newGameButton.classList.remove('button--hidden');
+    }
+
+    newGameButton.addEventListener('click', () => {
+        window.location.reload();
+    });
 
     gameboard.insertAdjacentHTML('beforeend', createCardsFragment());
 
@@ -108,8 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showScore();
             checkWin();
             blockClicks = false;
-        }, 500);
+        }, animationSpeed);
     });
 
 });
-

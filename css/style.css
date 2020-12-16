@@ -51,7 +51,7 @@ img {
     position: absolute;
     top: 0;
     left: 0;
-    
+
     border: 1px solid black;
 }
 .front {
@@ -75,13 +75,44 @@ img {
     color: white;
 }
 
+.button {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+
+    text-transform: uppercase;
+
+    color: white;
+    background-color: green;
+
+    transition: all .6s ease;
+}
+.button:hover {
+    background-color: yellowgreen;
+    color: gray;
+    cursor: pointer;
+}
+.button:active, .button:focus {
+    border: none;
+    outline: none;
+}
+.button--hidden {
+    display: none;
+}
+
 @media (max-width: 600px) {
     :root {
         --card-height: 120px;
         --card-gap: 5px;
     }
 
-    body {    
+    body {
         display: flex;
         align-items: center;
     }
@@ -93,4 +124,3 @@ img {
         align-items: flex-end;
     }
 }
-
