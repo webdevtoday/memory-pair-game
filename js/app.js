@@ -20,8 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     function rand(min, max) {
-        let rand = min + Math.random() * (max + 1 - min);
-        return Math.floor(rand);
+        return Math.floor(min + Math.random() * (max + 1 - min));
     }
 
     function randomCutImage() {
@@ -42,14 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="flipper">
                     <div class="front"></div>
                     <div class="back">
-                        <img src="{{imgpath}}" alt="card image">
+                        <img src="${imgPathBuilder( randomCutImage() )}" alt="card image">
                     </div>
                 </div>
             </div>
         `;
-        const card = cardTemplate.replace('{{imgpath}}', imgPathBuilder( randomCutImage() ));
 
-        return card;
+        return cardTemplate;
     }
 
     function createCardsFragment() {
@@ -89,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function checkWin() {
-        if (numberOfOpenCards === 12) {
+        if (numberOfOpenCards === numberOfCards) {
             score.innerHTML += ' YOU WIN!';
             console.log('%cWIN!!!', "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
             showButton();

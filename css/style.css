@@ -30,6 +30,12 @@ img {
     margin: 0 auto;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+.pair:hover, .open:hover {
+    cursor: not-allowed;
+}
 .flip-container {
     perspective: 1000px;
     margin: var(--card-gap);
