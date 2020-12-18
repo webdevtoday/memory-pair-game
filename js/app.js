@@ -46,7 +46,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `;
-
         return cardTemplate;
     }
 
